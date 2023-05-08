@@ -1,0 +1,19 @@
+.edit-post-layout__metaboxes .form-field {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.edit-post-layout__metaboxes .form-field label {
+    flex: 0 0 170px;
+}
+
+.edit-post-layout__metaboxes .form-field .form-control {
+    flex: 0 0 calc(100% - 170px);
+}
+
+.edit-post-layout__metaboxes .form-field .form-control .description {
+    display: block;
+    color: #777;
+    font-style: italic;
+    margin-top: 8px;
+}

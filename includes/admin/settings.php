@@ -368,7 +368,7 @@ class Settings {
 
 		// Build page HTML.
 		$html      = '<div class="wrap" id="' . GPC_SITE_PLUGIN_NAME . '_settings">' . "\n";
-			$html .= '<h2>' . __( 'Plugin Settings', 'gpc-site-functionality' ) . '</h2>' . "\n";
+			$html .= '<h2>' . get_bloginfo('name') . ' Settings' . '</h2>' . "\n";
 
 			$tab = '';
 		//phpcs:disable

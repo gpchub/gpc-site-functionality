@@ -27,16 +27,24 @@ class Custom_Post_Type_Name
 
     public function register_post_type()
     {
-        Post_Type_Helper::register('gpc_project', 'Dự án', '', [
+        Post_Type_Helper::register('gpc-project', 'Dự án', '', [
             'rewrite' => array( 'slug' => 'du-an' ),
         ]);
-        Taxonomy_Helper::regiter('gpc_project_cat', ['gpc-project'], 'Danh mục dự án', '', [
+        Taxonomy_Helper::regiter('gpc-project-cat', ['gpc-project'], 'Danh mục dự án', '', [
             'rewrite' => array( 'slug' => 'danh-muc-du-an' ),
         ]);
     }
 
+    public function add_meta_box()
+    {
+        $admin_api = Admin_Api::instance();
+        $admin_api->add_meta_box('project-custom-fields', 'Thông tin dự án', 'gpc-project');
+    }
+
     public function register_custom_fields($fields)
     {
+        $metabox_id = 'project-custom-fields';
+
         return array(
             array(
                 'id'          => 'project-custom-name',
@@ -45,7 +53,7 @@ class Custom_Post_Type_Name
                 'type'        => 'text',
                 'default'     => '',
                 'placeholder' => __( 'Placeholder text', 'gpc-site-functionality' ),
-                'metabox'     => 'project-custom-fields'
+                'metabox'     => $metabox_id
             ),
             array(
                 'id'          => 'password_field',
@@ -54,7 +62,7 @@ class Custom_Post_Type_Name
                 'type'        => 'password',
                 'default'     => '',
                 'placeholder' => __( 'Placeholder text', 'gpc-site-functionality' ),
-                'metabox'     => 'project-custom-fields'
+                'metabox'     => $metabox_id
             ),
             array(
                 'id'          => 'secret_text_field',
@@ -63,7 +71,7 @@ class Custom_Post_Type_Name
                 'type'        => 'text_secret',
                 'default'     => '',
                 'placeholder' => __( 'Placeholder text', 'gpc-site-functionality' ),
-                'metabox'     => 'project-custom-fields'
+                'metabox'     => $metabox_id
             ),
             array(
                 'id'          => 'text_block',
@@ -72,7 +80,7 @@ class Custom_Post_Type_Name
                 'type'        => 'textarea',
                 'default'     => '',
                 'placeholder' => __( 'Placeholder text for this textarea', 'gpc-site-functionality' ),
-                'metabox'     => 'project-custom-fields'
+                'metabox'     => $metabox_id
             ),
             array(
                 'id'          => 'single_checkbox',
@@ -80,7 +88,7 @@ class Custom_Post_Type_Name
                 'description' => __( 'A standard checkbox - if you save this option as checked then it will store the option as \'on\', otherwise it will be an empty string.', 'gpc-site-functionality' ),
                 'type'        => 'checkbox',
                 'default'     => '',
-                'metabox'     => 'project-custom-fields'
+                'metabox'     => $metabox_id
             ),
             array(
                 'id'          => 'select_box',
@@ -93,7 +101,7 @@ class Custom_Post_Type_Name
                     'wordpress' => 'WordPress',
                 ),
                 'default'     => 'wordpress',
-                'metabox'     => 'project-custom-fields'
+                'metabox'     => $metabox_id
             ),
             array(
                 'id'          => 'radio_buttons',
@@ -106,7 +114,7 @@ class Custom_Post_Type_Name
                     'ironman'  => 'Iron Man',
                 ),
                 'default'     => 'batman',
-                'metabox'     => 'project-custom-fields'
+                'metabox'     => $metabox_id
             ),
             array(
                 'id'          => 'multiple_checkboxes',
@@ -120,14 +128,10 @@ class Custom_Post_Type_Name
                     'triangle'  => 'Triangle',
                 ),
                 'default'     => array( 'circle', 'triangle' ),
-                'metabox'     => 'project-custom-fields'
+                'metabox'     => $metabox_id
             ),
         );
     }
 
-    public function add_meta_box()
-    {
-        $admin_api = Admin_Api::instance();
-        $admin_api->add_meta_box('project-custom-fields', 'Thông tin dự án', 'gpc-project');
-    }
+
 }

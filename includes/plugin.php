@@ -5,11 +5,12 @@
 
 namespace GpcSiteFunctionality;
 
-use GpcSiteFunctionality\Admin\Settings;
+use GpcSiteFunctionality\Admin\Site_Settings;
 use GpcSiteFunctionality\Block_Editor\Block_Patterns;
 use GpcSiteFunctionality\Post_Types\Comic;
 use GpcSiteFunctionality\Post_Types\Pet;
 use GpcSiteFunctionality\Post_Types\Project;
+use GpcSiteFunctionality\Post_Types\Member;
 use GpcSiteFunctionality\Trait\Singleton;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -25,8 +26,8 @@ class Plugin
 		register_activation_hook( GPC_SITE_PLUGIN_FILE, array( $this, 'install' ) );
 
 		$this->load_plugin_textdomain();
-
 		$this->register_post_types();
+		$this->register_blocks();
 		$this->load_admin();
 		$this->load_public();
 	}
@@ -36,17 +37,22 @@ class Plugin
 		Project::instance();
 		Pet::instance();
 		Comic::instance();
+		Member::instance();
+	}
+
+	public function register_blocks()
+	{
+
 	}
 
 	public function load_admin()
 	{
-		if ( is_admin() ) {
-			Settings::instance();
-		}
-
 		// Load admin JS & CSS.
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ), 10, 1 );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_styles' ), 10, 1 );
+
+		// create setting page
+		Site_Settings::instance();
 	}
 
 	public function load_public()

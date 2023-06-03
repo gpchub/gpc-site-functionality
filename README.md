@@ -7,3 +7,4 @@ Plugin chức năng cho child theme. Lưu ý code trong này chỉ là mẫu, c�
 - Custom post types
 - Custom taxonomy
 - Block patterns
+- Simple blocks example

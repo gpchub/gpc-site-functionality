@@ -1,0 +1,21 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 2,
+    "title": "GPC Pet info",
+    "name": "gpc/pet-info",
+    "category": "widgets",
+    "icon": "text",
+    "attributes": {
+		"text": {
+			"type": "string",
+			"source": "html"
+		}
+	},
+	"supports": {
+		"className": false,
+		"customClassName": false,
+		"html": false
+	},
+	"editorStyle": "wp-block-shortcode-editor",
+    "editorScript": "file:./block.js"
+}

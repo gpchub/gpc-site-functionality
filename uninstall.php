@@ -14,12 +14,4 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 }
 
 // Do something here if plugin is being uninstalled.
-global $wpdb;
-
-$prefix = 'gpc-site-functionality_';
-
-$plugin_options = $wpdb->get_results( "SELECT option_name FROM {$wpdb->options} WHERE option_name LIKE '{$prefix}%'" );
-
-foreach( $plugin_options as $option ) {
-	delete_option( $option->option_name );
-}
+// delete_option( 'your-settings-name' );

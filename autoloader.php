@@ -35,10 +35,10 @@ class Gizmo_Autoloader {
 		}
 
 		$class = str_replace( $namespace, '', $class );
-		$class = str_replace('_', '-', str_replace( '\\', DIRECTORY_SEPARATOR, $class )) . '.php';
+		$class = strtolower(str_replace('_', '-', str_replace( '\\', DIRECTORY_SEPARATOR, $class ))) . '.php';
 
 		$directory = plugin_dir_path( __FILE__ );
-		$path = $directory . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . $class;
+		$path = $directory . 'includes' . $class;
 
 		if ( file_exists( $path ) ) {
 			require_once( $path );

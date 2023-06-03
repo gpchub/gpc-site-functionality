@@ -1,9 +1,4 @@
 <?php
-/**
- * Singleton trait.
- *
- * @package WPBP
- */
 
 namespace GpcSiteFunctionality\Trait;
 

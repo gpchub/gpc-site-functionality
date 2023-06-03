@@ -24,7 +24,7 @@ class Comic
         Post_Type_Helper::register('gpc_comic', 'Comic', '', [
             'rewrite' => array( 'slug' => 'comic' ),
         ]);
-        Taxonomy_Helper::regiter('gpc_comic_cat', ['gpc-comic'], 'Danh mục comic', '', [
+        Taxonomy_Helper::regiter('gpc_comic_cat', ['gpc_comic'], 'Danh mục comic', '', [
             'rewrite' => array( 'slug' => 'danh-muc-comic' ),
         ]);
     }
